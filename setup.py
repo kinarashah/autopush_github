@@ -9,5 +9,6 @@ setup(name='autopush_github',
       license='MIT',
       packages=['autopush_github'],
       install_requires = [
-      ]
+      'requests'
+      ],
       zip_safe=False)

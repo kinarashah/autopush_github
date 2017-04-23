@@ -8,7 +8,7 @@ class Parser(object):
         self.parser.read('../config.cfg')
         self.username = self.parser.get('leetcode','username')
         self.password = self.parser.get('leetcode', 'password')
-        return self.username and self.password
+        return not self.username and not self.password
 
 parser = Parser()
 if not parser.parse():

@@ -3,7 +3,7 @@ import requests
 import json
 from config import USERNAME, PASSWORD
 
-PATH = 'cookies'
+PATH = './cookies'
 BASEURL = 'https://leetcode.com/'
 AUTHURL = BASEURL + 'accounts/login/'
 APIURL = BASEURL + 'api/problems/algorithms/'
@@ -19,7 +19,7 @@ headers = {
 }
 
 session = requests.Session()
-session.cookies = cookielib.LWPCookieJar(path)
+session.cookies = cookielib.LWPCookieJar(PATH)
 
 try:
     session.cookies.load(ignore_discard=True)
@@ -66,4 +66,7 @@ def isloggedin():
     if r.status_code!=200:
         return False 
     data = json.loads(r.text.encode('utf-8'))
-    return 'user_name' in data and data['user_name']
+    return 'user_name' in data and data['user_name']!=''
+
+login()
+print isloggedin()
